@@ -96,20 +96,29 @@ class NbSpider(scrapy.Spider):
         # 爬取全文请解除这部分注释并删除之后的内容
         #-------------------------#
         # 选取报表附注，这部分的逻辑并不是很好
-        pattern1 = re.compile('公司的基本情况(.+)节备查文件')
-        pattern2 = re.compile('公司基本情况(.+)节备查文件')
-        pattern3 = re.compile('、基本情况(.+)节备查文件')
-        pattern4 = re.compile('集团的基本情况(.+)节备查文件')
-        pattern5 = re.compile('集团基本情况(.+)节备查文件')
-        pattern6 = re.compile('公司的基本情况(.+)关闭窗口')
-        pattern7 = re.compile('公司基本情况(.+)关闭窗口')
-        pattern8 = re.compile('、基本情况(.+)关闭窗口')
-        pattern9 = re.compile('集团的基本情况(.+)关闭窗口')
-        pattern10 = re.compile('集团基本情况(.+)关闭窗口')
-        pattern11 = re.compile('的基本情况(.+)节备查文件')
-        pattern12 = re.compile('的基本情况(.+)关闭窗口')
-        patterns = [pattern1, pattern2, pattern3, pattern4, pattern5, pattern6, 
-                    pattern7, pattern8, pattern9, pattern10, pattern11, pattern12]
+        pattern11 = re.compile('、公司基本情况(.+)节备查文件')
+        pattern12 = re.compile('公司的基本情况(.+)节备查文件')
+        pattern13 = re.compile('公司基本情况(.+)节备查文件')
+        pattern14 = re.compile('、基本情况(.+)节备查文件')
+        pattern15 = re.compile('集团的基本情况(.+)节备查文件')
+        pattern16 = re.compile('集团基本情况(.+)节备查文件')
+        pattern17 = re.compile('财务报表附注(.+)节备查文件')
+        pattern18 = re.compile('公司概况(.+)节备查文件')
+        pattern19 = re.compile('的基本情况(.+)节备查文件')
+        pattern21 = re.compile('、公司基本情况(.+)关闭窗口')
+        pattern22 = re.compile('公司的基本情况(.+)关闭窗口')
+        pattern23 = re.compile('公司基本情况(.+)关闭窗口')
+        pattern24 = re.compile('、基本情况(.+)关闭窗口')
+        pattern25 = re.compile('集团的基本情况(.+)关闭窗口')
+        pattern26 = re.compile('集团基本情况(.+)关闭窗口')
+        pattern27 = re.compile('财务报表附注(.+)关闭窗口')
+        pattern28 = re.compile('公司概况(.+)关闭窗口')
+        pattern29 = re.compile('的基本情况(.+)关闭窗口')
+        
+        patterns = [pattern11, pattern12, pattern13, pattern14, pattern15, 
+                    pattern16, pattern17, pattern18, pattern19, 
+                    pattern21, pattern22, pattern23, pattern24, pattern25, 
+                    pattern26, pattern27, pattern28, pattern29]
         for pattern in patterns:
             notes = re.search(pattern, text)
             if notes!=None:
