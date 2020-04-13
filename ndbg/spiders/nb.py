@@ -98,12 +98,22 @@ class NbSpider(scrapy.Spider):
         # 选取报表附注，这部分的逻辑并不是很好
         pattern1 = re.compile('公司的基本情况(.+)节备查文件')
         pattern2 = re.compile('公司基本情况(.+)节备查文件')
-        pattern3 = re.compile('公司基本情况(.+)关闭窗口')
-        notes = re.search(pattern1, text)
-        if notes == None:
-            notes = re.search(pattern2, text)
-        if notes == None:
-            notes = re.search(pattern3, text)    
+        pattern3 = re.compile('、基本情况(.+)节备查文件')
+        pattern4 = re.compile('集团的基本情况(.+)节备查文件')
+        pattern5 = re.compile('集团基本情况(.+)节备查文件')
+        pattern6 = re.compile('公司的基本情况(.+)关闭窗口')
+        pattern7 = re.compile('公司基本情况(.+)关闭窗口')
+        pattern8 = re.compile('、基本情况(.+)关闭窗口')
+        pattern9 = re.compile('集团的基本情况(.+)关闭窗口')
+        pattern10 = re.compile('集团基本情况(.+)关闭窗口')
+        pattern11 = re.compile('的基本情况(.+)节备查文件')
+        pattern12 = re.compile('的基本情况(.+)关闭窗口')
+        patterns = [pattern1, pattern2, pattern3, pattern4, pattern5, pattern6, 
+                    pattern7, pattern8, pattern9, pattern10, pattern11, pattern12]
+        for pattern in patterns:
+            notes = re.search(pattern, text)
+            if notes!=None:
+                break 
         content = notes.group(1)
         # 生成item
         item = NdbgItem(code=code, year=year, title=title, content=content)
